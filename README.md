@@ -8,7 +8,7 @@ https://github.com/KP1709/ColourInputDisplayer
 HTML / CSS / React / Typescript /  npm / Node.js
 
 ## 🍼 Introduction
-After *currently* finishing Bob Ziroll's Typescript course on Scrimba, I wanted to look into using Typescript and React together. I chose to convert this project into Typescript because it was small, enabling me to focus on the fundamentals of Typescript. 
+After *currently* finishing Bob Ziroll's Typescript course on Scrimba, I wanted to look into using Typescript and React together. I chose to convert this project into Typescript because it was small, enabling me to focus on the fundamentals of the language. 
 
 ## 📚 Resources 
 - TypeScript in React - Complete Tutorial (Crash Course) - https://www.youtube.com/watch?v=TPACABQTHvM
