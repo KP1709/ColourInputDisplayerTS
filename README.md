@@ -1,30 +1,16 @@
-# React + TypeScript + Vite
+# Colour Input Displayer (Typescript Version)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8d06b61f-0f7c-4f63-ace4-8e4f65aedf3d/deploy-status)](https://app.netlify.com/sites/kareenapatel-colourinputdisplayerts/deploys)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ☕ Javascript version (First Version)
+https://github.com/KP1709/ColourInputDisplayer
 
-Currently, two official plugins are available:
+## ⌨️ Tech stack 
+HTML / CSS / React / Typescript /  npm / Node.js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🍼 Introduction
+After *currently* finishing Bob Ziroll's Typescript course on Scrimba, I wanted to to look into using Typescript and React together. I chose to convert this project into Typescript because it was small, enabling me to focus on the fundamentals of Typescript. 
 
-## Expanding the ESLint configuration
+## 📚 Resources 
+- TypeScript in React - Complete Tutorial (Crash Course) - https://www.youtube.com/watch?v=TPACABQTHvM
+- Scrimba's Learn Typescript Course - https://v2.scrimba.com/learn-typescript-c03c
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
