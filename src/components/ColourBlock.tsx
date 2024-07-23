@@ -20,7 +20,7 @@ export default function ColourBlock(
             <p className="border-radius">{colour}</p>
             <button
                 className="flex"
-                aria-label={`delete colour #${colour}`}
+                aria-label={`delete colour ${colour}`}
                 onClick={() => remove(id)}>&#10005;
             </button>
         </div>
