@@ -76,11 +76,12 @@ export default function ColourInputer() {
                     type="text"
                     name="hexColour"
                     id="hexColour"
+                    data-test="colour-form"
                     value={enteredColour}
                     onChange={e => setEnteredColour(e.target.value)}
                     placeholder="00ff00 or 00f"
                 />
-                <input type="submit" value="Add" />
+                <input type="submit" value="Add" onClick={validation} data-test="add-colour-button"/>
             </form>
 
             <RemoveFromListContext.Provider value={removeFromListProvider}>
