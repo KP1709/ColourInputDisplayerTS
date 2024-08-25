@@ -8,7 +8,7 @@ export default function Header(){
     
     return (
         <header style={style}>
-            <h1>Colour Input Displayer</h1>
+            <h1 data-test="page-header">Colour Input Displayer</h1>
         </header>
     )
 }

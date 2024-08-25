@@ -50,14 +50,15 @@ export default function ColourInputer() {
                 <input type="text"
                     name="hexColour"
                     id="hexColour"
+                    data-test="colour-form"
                     value={enteredColour}
                     onChange={(e) => setEnteredColour(e.target.value)}
                     placeholder="00ff00 or 00f"
                 />
-                <input type="submit" value="Add" onClick={validation} />
+                <input type="submit" value="Add" onClick={validation} data-test="add-colour-button"/>
             </form>
 
-            <ul>
+            <ul data-test="colour-list">
             {colourList.map(item =>
                     <li><ColourBlock
                         key ={uuid()}
