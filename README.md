@@ -17,5 +17,6 @@ After *currently* finishing Bob Ziroll's Typescript course on Scrimba, I wanted 
 - Cypress, React and Vite collaboration (Rodion Kazennov - Medium) - https://medium.com/@nelfayran/cypress-react-and-vite-collaboration-bed6761808fc
 - Typescript ReferenceError: exports is not defined - https://stackoverflow.com/questions/43042889/typescript-referenceerror-exports-is-not-defined
 - Adding Custom Commands to Cypress Typescript (Gagah Ghalistan - Medium) - https://medium.com/@gghalistan/adding-custom-commands-to-cypress-typescript-28d23f90c2fd
+- Problem with Re-rendering when passing a React function with React Context API - https://stackoverflow.com/questions/63200464/problem-with-re-rendering-when-passing-a-react-function-with-react-context-api 
 - How to use React Context in Typescript - https://blog.logrocket.com/how-to-use-react-context-typescript/
 
