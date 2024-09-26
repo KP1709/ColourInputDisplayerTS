@@ -8,7 +8,7 @@ type ColourListType = {
 
 export default function ColoursList({ colourList}: ColourListType) {
     return (
-        <ul>
+        <ul data-test="colour-list">
             {colourList.map(item =>
                 <li>
                     <ColourBlock
