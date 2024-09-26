@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import "../styles/ColourBlock.css"
 import { RemoveFromListContext, RemoveFromListContextType} from "./ColourInputer"
 
@@ -7,7 +7,7 @@ type ColourBlockProps = {
     id: String,
 }
 
-export default function ColourBlock({ colour, id }: ColourBlockProps) {
+function ColourBlock({ colour, id }: ColourBlockProps) {
     const { removeFromList } = useContext(RemoveFromListContext) as RemoveFromListContextType
 
     const style = {
@@ -25,3 +25,7 @@ export default function ColourBlock({ colour, id }: ColourBlockProps) {
         </div>
     )
 }
+
+// The application is small so rerendering won't affect the performance of it.
+// However for practice, React.memo is applied
+export default memo(ColourBlock)
