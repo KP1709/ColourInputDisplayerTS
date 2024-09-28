@@ -5,10 +5,11 @@ import { RemoveFromListContext, RemoveFromListContextType} from "./ColourInputer
 type ColourBlockProps = {
     hexColour: String,
     id: String,
+    colourName: String
 }
 
 function ColourBlock({ ...items}: ColourBlockProps) {
-    const {hexColour, id} = {...items}
+    const {hexColour, id, colourName} = {...items}
     const { removeFromList } = useContext(RemoveFromListContext) as RemoveFromListContextType
 
     const style = {
@@ -18,6 +19,7 @@ function ColourBlock({ ...items}: ColourBlockProps) {
     return (
         <div className="colour-block border-radius flex" style={style}>
             <p className="border-radius">{hexColour}</p>
+            <p id="colour-block-colour-name" className="border-radius">{colourName}</p>
             <button
                 className="flex"
                 aria-label={`delete colour ${hexColour}`}

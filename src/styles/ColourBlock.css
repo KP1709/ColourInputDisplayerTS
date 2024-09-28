@@ -24,6 +24,13 @@ p{
     letter-spacing: 2px;
 }
 
+#colour-block-colour-name{
+    font-size: 0.7rem;
+    margin-left: 10px;
+}
+
+
+
 button{
     cursor: pointer;
     position: absolute;
