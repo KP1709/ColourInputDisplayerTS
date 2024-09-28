@@ -14,8 +14,7 @@ function ColoursList({ colourList}: ColourListType) {
                 <li>
                     <ColourBlock
                         key={uuid()}
-                        id={item.id} // Can be accessed in code
-                        colour={item.hexColour}
+                        {...item}
                     />
                 </li>)}
         </ul>
