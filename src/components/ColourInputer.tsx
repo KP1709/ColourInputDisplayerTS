@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import ColoursList from "./ColoursList";
 import { v4 as uuid } from "uuid"
 import "../styles/ColourInputer.css"
@@ -12,10 +12,23 @@ export const RemoveFromListContext = createContext<RemoveFromListContextType | n
 
 export default function ColourInputer() {
     const [enteredColour, setEnteredColour] = useState("")
+    const [colourWord, setColourWord] = useState("")
     
     // Colour type alias assigned as used in List to store item objects
     const [colourList, setColourList] = useState<Colour[]>([])
-    
+
+    // Appending to an array in state
+    const addColour = (): void => {
+        // id added to help with deleting item + making component unique to siblings
+
+        const newColour: Colour = {
+            id: uuid(),
+            hexColour: `#${enteredColour.toUpperCase()}`,
+            colourName: colourWord.toUpperCase()
+        }
+        setColourList([newColour, ...colourList])
+    }
+
     const handleSubmit = (e: { preventDefault: () => void; }): void => {
         e.preventDefault();
         { validation() ? addColour() : null }
@@ -33,17 +46,22 @@ export default function ColourInputer() {
         if (enteredColour.match(regex)) return true
         else return false
     }
-    
-    // Appending to an array in state
-    const addColour = (): void => {
-        // id added to help with deleting item + making component unique to siblings
-        const newColour: Colour = {
-            id: uuid(),
-            hexColour: `#${enteredColour.toUpperCase()}`,
-            // colourName: colourWord.toUpperCase()
+
+    // Gets colour name from API
+    useEffect(() => {
+        async function getColourWord(enteredColour: String) {
+            if (enteredColour === "") return null
+            try {
+                const response = await fetch (`https://www.thecolorapi.com/id?hex=${enteredColour}&format=json`)
+                const data = await response.json()
+                setColourWord(data.name.value)
+            }
+            catch (err){
+                console.error(err)
+            }
         }
-        setColourList([newColour, ...colourList])
-    }
+        getColourWord(enteredColour)
+    }, [addColour])
     
     // CreateContext causes rerendering (when passing in a function) so useMemo is applied
     const removeFromListProvider =useMemo(()=>({removeFromList}),[colourList]) 
