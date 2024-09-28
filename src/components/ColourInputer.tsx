@@ -10,7 +10,6 @@ export type RemoveFromListContextType = {
 
 export const RemoveFromListContext = createContext<RemoveFromListContextType | null>(null)
 
-
 export default function ColourInputer() {
     const [enteredColour, setEnteredColour] = useState("")
     
@@ -40,7 +39,8 @@ export default function ColourInputer() {
         // id added to help with deleting item + making component unique to siblings
         const newColour: Colour = {
             id: uuid(),
-            hexColour: `#${enteredColour.toUpperCase()}`
+            hexColour: `#${enteredColour.toUpperCase()}`,
+            // colourName: colourWord.toUpperCase()
         }
         setColourList([newColour, ...colourList])
     }
