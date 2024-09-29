@@ -11,7 +11,7 @@ function ColoursList({ colourList}: ColourListType) {
     return (
         <ul>
             {colourList.map(item =>
-                <li>
+                <li key={uuid()}>
                     <ColourBlock
                         key={uuid()}
                         {...item}
