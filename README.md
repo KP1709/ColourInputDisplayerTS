@@ -10,6 +10,10 @@ HTML / CSS / React / Typescript / npm / Node.js / Cypress (testing)
 ## 🍼 Introduction
 After *currently* finishing Bob Ziroll's Typescript course on Scrimba, I wanted to look into using Typescript and React together. I chose to convert this project into Typescript because it was small, enabling me to focus on the fundamentals of the language. 
 
+## 🛠️ Additional Features 
+- useMemo and React.memo used to prevent child components from rerendering unnecessarily (Done for practice only)
+- Gets and displays the colour name from an API based on the hexadecimal value entered
+
 ## 📚 Resources 
 - TypeScript in React - Complete Tutorial (Crash Course) - https://www.youtube.com/watch?v=TPACABQTHvM
 - Scrimba's Learn Typescript Course - https://v2.scrimba.com/learn-typescript-c03c
