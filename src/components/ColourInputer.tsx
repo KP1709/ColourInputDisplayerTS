@@ -3,6 +3,7 @@ import ColoursList from "./ColoursList";
 import { v4 as uuid } from "uuid"
 import "../styles/ColourInputer.css"
 import { Colour } from "../reusableTypes/colourType"
+import useDebounce from "../hooks/useDebounce";
 
 export type RemoveFromListContextType = {
     removeFromList: (value: String) => void
@@ -13,14 +14,35 @@ export const RemoveFromListContext = createContext<RemoveFromListContextType | n
 export default function ColourInputer() {
     const [enteredColour, setEnteredColour] = useState("")
     const [colourWord, setColourWord] = useState("")
-    
-    // Colour type alias assigned as used in List to store item objects
     const [colourList, setColourList] = useState<Colour[]>([])
+
+    // Custom hook used to reduce unnecessary API calls 
+    const debouncedColour = useDebounce(enteredColour, 300)
+
+    // Gets colour name from API
+    useEffect(() => {
+        async function getColourWord() {
+            if (enteredColour === "") return null
+            try {
+                const response = await fetch(`https://www.thecolorapi.com/id?hex=${debouncedColour}&format=json`)
+                const data = await response.json()
+                setColourWord(data.name.value)
+            }
+            catch (err) {
+                console.error(err)
+            }
+        }
+        getColourWord()
+    }, [debouncedColour])
+
+    const handleSubmit = (e: { preventDefault: () => void; }): void => {
+        e.preventDefault();
+        { validation() ? addColour() : null }
+        setEnteredColour('') // Clears input after submission 
+    }
 
     // Appending to an array in state
     const addColour = (): void => {
-        // id added to help with deleting item + making component unique to siblings
-
         const newColour: Colour = {
             id: uuid(),
             hexColour: `#${enteredColour.toUpperCase()}`,
@@ -29,59 +51,38 @@ export default function ColourInputer() {
         setColourList([newColour, ...colourList])
     }
 
-    const handleSubmit = (e: { preventDefault: () => void; }): void => {
-        e.preventDefault();
-        { validation() ? addColour() : null }
-        setEnteredColour('') // Clears input after submission 
-    }
-    
     // Delete item from array in state
     const removeFromList = (value: String): void => {
         setColourList(colourList.filter(c => c.id !== value))
     }
-    
+
     // Validate input before adding to list
     const validation = (): Boolean => {
-        const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i; // Regex expression to validate string
+        const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i;
         if (enteredColour.match(regex)) return true
         else return false
     }
 
-    // Gets colour name from API
-    useEffect(() => {
-        async function getColourWord(enteredColour: String) {
-            if (enteredColour === "") return null
-            try {
-                const response = await fetch (`https://www.thecolorapi.com/id?hex=${enteredColour}&format=json`)
-                const data = await response.json()
-                setColourWord(data.name.value)
-            }
-            catch (err){
-                console.error(err)
-            }
-        }
-        getColourWord(enteredColour)
-    }, [addColour])
-    
     // CreateContext causes rerendering (when passing in a function) so useMemo is applied
-    const removeFromListProvider =useMemo(()=>({removeFromList}),[colourList]) 
+    const removeFromListProvider = useMemo(() => ({ removeFromList }), [colourList])
 
     return (
         <>
             <form onSubmit={handleSubmit} className="form">
-                <p>#</p> {/* # = Signify hex value to be entered  */}
-                <input type="text"
+                <p>#</p>
+                <input
+                    type="text"
                     name="hexColour"
                     id="hexColour"
                     value={enteredColour}
-                    onChange={(e) => setEnteredColour(e.target.value)}
+                    onChange={e => setEnteredColour(e.target.value)}
                     placeholder="00ff00 or 00f"
                 />
-                <input type="submit" value="Add" onClick={validation} />
+                <input type="submit" value="Add" />
             </form>
 
             <RemoveFromListContext.Provider value={removeFromListProvider}>
-                <ColoursList colourList={colourList}/>
+                <ColoursList colourList={colourList} />
             </RemoveFromListContext.Provider>
         </>
     )
