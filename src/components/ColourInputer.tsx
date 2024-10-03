@@ -63,6 +63,22 @@ export default function ColourInputer() {
         else return false
     }
 
+    // Gets colour name from API
+    useEffect(() => {
+        async function getColourWord(enteredColour: String) {
+            if (enteredColour === "") return null
+            try {
+                const response = await fetch (`https://www.thecolorapi.com/id?hex=${enteredColour}&format=json`)
+                const data = await response.json()
+                setColourWord(data.name.value)
+            }
+            catch (err){
+                console.error(err)
+            }
+        }
+        getColourWord(enteredColour)
+    }, [addColour])
+    
     // CreateContext causes rerendering (when passing in a function) so useMemo is applied
     const removeFromListProvider = useMemo(() => ({ removeFromList }), [colourList])
 
