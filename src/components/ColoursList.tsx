@@ -1,22 +1,26 @@
 import ColourBlock from "./ColourBlock";
 import { v4 as uuid } from "uuid"
 import { Colour } from "../reusableTypes/colourType";
+import { memo } from "react";
 
 type ColourListType = {
     colourList: Colour[]
 }
 
-export default function ColoursList({ colourList}: ColourListType) {
+function ColoursList({ colourList}: ColourListType) {
     return (
         <ul data-test="colour-list">
             {colourList.map(item =>
-                <li>
+                <li key={uuid()}>
                     <ColourBlock
                         key={uuid()}
-                        id={item.id} // Can be accessed in code
-                        colour={item.hexColour}
+                        {...item}
                     />
                 </li>)}
         </ul>
     )
 }
+
+// The application is small so rerendering won't affect the performance of it.
+// However for practice, React.memo is applied
+export default memo(ColoursList)
