@@ -17,7 +17,7 @@ export default function ColourInputer() {
     const [colourList, setColourList] = useState<Colour[]>([])
 
     // Custom hook used to reduce unnecessary API calls 
-    const debouncedColour = useDebounce(enteredColour, 300)
+    const debouncedColour = useDebounce(enteredColour, 200)
 
     // Gets colour name from API
     useEffect(() => {
