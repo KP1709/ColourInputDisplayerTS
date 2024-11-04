@@ -17,7 +17,7 @@ function ColourBlock({ ...items}: ColourBlockProps) {
     }
 
     return (
-        <div className="colour-block border-radius flex" style={style}>
+        <div className="colour-block border-radius flex" style={style} data-test={`colour-block-${hexColour}`}>
             <p className="border-radius">{hexColour}</p>
             <p id="colour-block-colour-name" className="border-radius">{colourName}</p>
             <button
