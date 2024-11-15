@@ -61,6 +61,7 @@ describe('Test Colour Inputer Component', () => {
     cy.getDataTest('add-colour-button').click()
 
     cy.getDataTest('colour-block-#4A90E2').should('exist')
+    cy.getDataTest('colour-block-#4A90E2').should('have.css', 'background-color','rgb(74, 144, 226)')
     cy.getDataTest('colour-block-#4A90E2').within(() => {
       cy.get('p:nth-child(1)').should('contain', '#4A90E2') // Not wise to do as 'p' element could change
       cy.get('p:nth-child(2)').should('contain', 'HAVELOCK BLUE') 
