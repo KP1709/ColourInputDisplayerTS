@@ -1,12 +1,13 @@
 import ColourInputer from '../../src/components/ColourInputer'
+import { mount } from 'cypress/react18'
 
 describe('Test Colour Inputer Component', () => {
   it('Renders', () => {
-    cy.mount(<ColourInputer />)
+    mount(<ColourInputer />)
   })
 
   it('Testing colour list functionality', () => {
-    cy.mount(<ColourInputer />)
+    mount(<ColourInputer />)
 
     cy.getDataTest('colour-list').within(() => {
       cy.get('li').should('have.length', 0)
@@ -52,7 +53,7 @@ describe('Test Colour Inputer Component', () => {
   })
 
   it('Testing colour block contains correct elements', () => {
-    cy.mount(<ColourInputer />)
+    mount(<ColourInputer />)
 
     cy.getDataTest('colour-form').as('colour-input')
 
