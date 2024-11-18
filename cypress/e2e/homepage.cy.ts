@@ -18,12 +18,15 @@ describe('Main Page Tests', () => {
 
       cy.getDataTest('colour-form').as('colour-input')
       cy.get('@colour-input').type('0000FF')
+      cy.wait(1000) // debouncing
       cy.getDataTest('add-colour-button').click()
       cy.wait(500)
       cy.get('@colour-input').type('ff0000') // Testing lower case input
+      cy.wait(1000) // debouncing
       cy.getDataTest('add-colour-button').click()
       cy.wait(500)
       cy.get('@colour-input').type('0F0') // Testing length of 3
+      cy.wait(1000) // debouncing
       cy.getDataTest('add-colour-button').click()
 
       cy.getDataTest('colour-list').within(() =>{
