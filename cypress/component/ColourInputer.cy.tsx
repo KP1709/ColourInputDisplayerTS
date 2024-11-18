@@ -72,4 +72,11 @@ describe('Test Colour Inputer Component', () => {
 
   })
 
+  it('Test human input and debouncing', () => {
+    mount(<ColourInputer />)
+    cy.log('Paused to get input of a valid hex colour')
+    cy.pause()
+    cy.getDataTest('add-colour-button').click()
+  })
+
 })
