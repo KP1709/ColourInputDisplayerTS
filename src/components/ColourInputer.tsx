@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import ColoursList from "./ColoursList";
 import { v4 as uuid } from "uuid"
 import "../styles/ColourInputer.css"
@@ -52,9 +52,11 @@ export default function ColourInputer() {
     }
 
     // Delete item from array in state
-    const removeFromList = (value: String): void => {
+    // Practice (not necessary) using useCallback to stop rerendering function in child
+    const removeFromList = useCallback((value: String): void => {
         setColourList(colourList.filter(c => c.id !== value))
-    }
+    }, [colourList])
+    
 
     // Validate input before adding to list
     const validation = (): Boolean => {
