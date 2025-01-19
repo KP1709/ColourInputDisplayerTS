@@ -13,10 +13,6 @@ After *currently* finishing Bob Ziroll's Typescript course on Scrimba, I wanted 
 ## 🛠️ Additional Features 
 - useMemo and React.memo used to prevent child components from rerendering unnecessarily (Done for practice only)
 - Gets and displays the colour name from an API based on the hexadecimal value entered
-
-## 🛠️ Additional Features 
-- useMemo and React.memo used to prevent child components from rerendering unnecessarily (Done for practice only)
-- Gets and displays the colour name from an API based on the hexadecimal value entered
   - Used debouncing to reduce the number of unnecessary API calls made
 
 ## 📚 Resources 
