@@ -1,15 +1,9 @@
 import { memo, useContext } from "react";
 import "../styles/ColourBlock.css"
 import { RemoveFromListContext, RemoveFromListContextType} from "./ColourInputer"
+import { Colour } from "../reusableTypes/colourType";
 
-type ColourBlockProps = {
-    hexColour: String,
-    id: String,
-    colourName: String
-}
-
-function ColourBlock({ ...items}: ColourBlockProps) {
-    const {hexColour, id, colourName} = {...items}
+function ColourBlock({hexColour, id, colourName}: Colour) {
     const { removeFromList } = useContext(RemoveFromListContext) as RemoveFromListContextType
 
     const style = {
