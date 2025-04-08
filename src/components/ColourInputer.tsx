@@ -67,7 +67,7 @@ export default function ColourInputer() {
     const removeFromListProvider = useMemo(() => ({ removeFromList }), [colourList])
 
     return (
-        <>
+        <main>
             <form onSubmit={handleSubmit} className="form">
                 <label htmlFor='hexColour'>Enter a colour (#):</label>
                 <input
@@ -89,6 +89,6 @@ export default function ColourInputer() {
             <RemoveFromListContext.Provider value={removeFromListProvider}>
                 <ColoursList colourList={colourList} />
             </RemoveFromListContext.Provider>
-        </>
+        </main>
     )
 }
