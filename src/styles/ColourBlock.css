@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -10,7 +12,7 @@
     border-radius: 20px;
 }
 
-.colour-block{
+.colour-block {
     position: relative;
     align-items: center;
     padding: 0.5em 1em;
@@ -18,20 +20,18 @@
     border: 2px solid black;
 }
 
-p{
+p {
     background-color: white;
     padding: 0.3em;
     letter-spacing: 2px;
 }
 
-#colour-block-colour-name{
+#colour-block-colour-name {
     font-size: 0.7rem;
     margin-left: 10px;
 }
 
-
-
-button{
+.delete-button {
     cursor: pointer;
     position: absolute;
     right: 1em;
