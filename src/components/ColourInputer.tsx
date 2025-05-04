@@ -15,6 +15,7 @@ export default function ColourInputer() {
     const [enteredColour, setEnteredColour] = useState("")
     const [colourWord, setColourWord] = useState("")
     const [colourList, setColourList] = useState<Colour[]>([])
+    const [invalidColourEntered, setInvalidColourEntered] = useState(false)
 
     // Custom hook used to reduce unnecessary API calls 
     const debouncedColour = useDebounce(enteredColour, 200)
@@ -37,8 +38,7 @@ export default function ColourInputer() {
 
     const handleSubmit = (e: { preventDefault: () => void; }): void => {
         e.preventDefault();
-        { validation() ? addColour() : null }
-        setEnteredColour('') // Clears input after submission 
+        { validation() ? addColour() : setInvalidColourEntered(true) }
     }
 
     // Appending to an array in state
@@ -49,6 +49,8 @@ export default function ColourInputer() {
             colourName: colourWord.toUpperCase()
         }
         setColourList([newColour, ...colourList])
+        setInvalidColourEntered(false)
+        setEnteredColour("")
     }
 
     // Delete item from array in state
@@ -56,7 +58,7 @@ export default function ColourInputer() {
     const removeFromList = useCallback((value: String): void => {
         setColourList(colourList.filter(c => c.id !== value))
     }, [colourList])
-    
+
 
     // Validate input before adding to list
     const validation = (): Boolean => {
@@ -64,7 +66,7 @@ export default function ColourInputer() {
         if (enteredColour.match(regex)) return true
         else return false
     }
-    
+
     // CreateContext causes rerendering (when passing in a function) so useMemo is applied
     const removeFromListProvider = useMemo(() => ({ removeFromList }), [colourList])
 
@@ -81,7 +83,7 @@ export default function ColourInputer() {
                     onChange={e => setEnteredColour(e.target.value)}
                     placeholder="00ff00 or 00f"
                 />
-                <input type="submit" value="Add" data-test='add-colour-button'/>
+                <input type="submit" value="Add" data-test='add-colour-button' />
             </form>
 
             <RemoveFromListContext.Provider value={removeFromListProvider}>
