@@ -14,6 +14,7 @@ After *currently* finishing Bob Ziroll's Typescript course on Scrimba, I wanted 
 - useMemo and React.memo used to prevent child components from rerendering unnecessarily (Done for practice only)
 - Gets and displays the colour name from an API based on the hexadecimal value entered
   - Used debouncing to reduce the number of unnecessary API calls made
+- Retains user input if colour code is invalid + shows visual error message and highlights input box
 
 ## 📚 Resources 
 - TypeScript in React - Complete Tutorial (Crash Course) - https://www.youtube.com/watch?v=TPACABQTHvM
