@@ -73,7 +73,7 @@ export default function ColourInputer() {
     return (
         <>
             <form onSubmit={handleSubmit} className="form">
-                <p>#</p>
+                <label htmlFor='hexColour'>Enter a colour (#):</label>
                 <input
                     type="text"
                     name="hexColour"
@@ -82,8 +82,12 @@ export default function ColourInputer() {
                     value={enteredColour}
                     onChange={e => setEnteredColour(e.target.value)}
                     placeholder="00ff00 or 00f"
+                    className={invalidColourEntered ? 'invalid-input' : ''}
+                    aria-invalid={invalidColourEntered ? "true" : "false"}
+                    aria-errormessage="error-message"
                 />
                 <button type="submit" data-test='add-colour-button'>Add</button>
+                {invalidColourEntered && <p id="error-message">Invalid colour entered</p>}
             </form>
 
             <RemoveFromListContext.Provider value={removeFromListProvider}>
