@@ -12,8 +12,8 @@ function ColourBlock({ hexColour, id, colourName }: Colour) {
 
     return (
         <div className="colour-block border-radius flex" style={style} data-test={`colour-block-${hexColour}`}>
-            <p className="border-radius">{hexColour}</p>
-            <p id="colour-block-colour-name" className="border-radius">{colourName}</p>
+            <p className="border-radius colour-block-colour-code">{hexColour}</p>
+            <p className="border-radius colour-block-colour-name">{colourName}</p>
             <button
                 className="flex delete-button"
                 aria-label={`delete colour ${hexColour}`}
