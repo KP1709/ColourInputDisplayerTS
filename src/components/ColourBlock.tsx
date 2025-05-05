@@ -7,7 +7,7 @@ function ColourBlock({ hexColour, id, colourName }: Colour) {
     const { removeFromList } = useContext(RemoveFromListContext) as RemoveFromListContextType
 
     const style = {
-        backgroundColor: `${hexColour}` // Background is set as entered colour
+        backgroundColor: `${hexColour}`
     }
 
     return (

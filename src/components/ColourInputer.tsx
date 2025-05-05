@@ -20,7 +20,6 @@ export default function ColourInputer() {
     // Custom hook used to reduce unnecessary API calls 
     const debouncedColour = useDebounce(enteredColour, 200)
 
-    // Gets colour name from API
     useEffect(() => {
         async function getColourWord() {
             if (enteredColour === "") return null
@@ -41,7 +40,6 @@ export default function ColourInputer() {
         { validation() ? addColour() : setInvalidColourEntered(true) }
     }
 
-    // Appending to an array in state
     const addColour = (): void => {
         const newColour: Colour = {
             id: uuid(),
@@ -59,8 +57,6 @@ export default function ColourInputer() {
         setColourList(colourList.filter(c => c.id !== value))
     }, [colourList])
 
-
-    // Validate input before adding to list
     const validation = (): Boolean => {
         const regex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i;
         if (enteredColour.match(regex)) return true
