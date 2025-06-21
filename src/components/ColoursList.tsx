@@ -1,5 +1,4 @@
 import ColourBlock from "./ColourBlock";
-import { v4 as uuid } from "uuid"
 import { Colour } from "../reusableTypes/colourType";
 import { memo } from "react";
 
@@ -7,13 +6,12 @@ type ColourListType = {
     colourList: Colour[]
 }
 
-function ColoursList({ colourList}: ColourListType) {
+function ColoursList({ colourList }: ColourListType) {
     return (
         <ul data-test="colour-list">
             {colourList.map(item =>
-                <li key={uuid()}>
+                <li key={item.id}>
                     <ColourBlock
-                        key={uuid()}
                         {...item}
                     />
                 </li>)}
