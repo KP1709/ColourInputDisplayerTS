@@ -46,15 +46,16 @@ export default function ColourInputer() {
         const newColour: Colour = {
             id: uuid(),
             hexColour: `#${enteredColour.toUpperCase()}`,
-            colourName: colourWord.toUpperCase()
+            colourName: ''
         }
 
-        if (newColour.colourName) {
+        if (colourWord) {
             setHint(false)
-            setColourList([newColour, ...colourList])
+            setColourList([{ ...newColour, colourName: colourWord.toUpperCase() }, ...colourList])
             setInvalidColourEntered(false)
             setEnteredColour("")
         }
+        setColourWord('')
     }
 
     // Delete item from array in state

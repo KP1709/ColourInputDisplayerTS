@@ -26,11 +26,11 @@ ul {
     letter-spacing: unset;
 }
 
-.message#error-message {
+.message#error {
     color: rgb(255, 0, 0);
 }
 
-.message#loading-message {
+.message#loading {
     color: rgb(0, 0, 255);
 }
 
