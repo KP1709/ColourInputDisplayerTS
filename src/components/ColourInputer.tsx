@@ -16,6 +16,7 @@ export default function ColourInputer() {
     const [colourWord, setColourWord] = useState("")
     const [colourList, setColourList] = useState<Colour[]>([])
     const [invalidColourEntered, setInvalidColourEntered] = useState(false)
+    const [hint, setHint] = useState(false)
 
     // Custom hook used to reduce unnecessary API calls 
     const debouncedColour = useDebounce(enteredColour, 200)
@@ -41,14 +42,19 @@ export default function ColourInputer() {
     }
 
     const addColour = (): void => {
+        setHint(true)
         const newColour: Colour = {
             id: uuid(),
             hexColour: `#${enteredColour.toUpperCase()}`,
             colourName: colourWord.toUpperCase()
         }
-        setColourList([newColour, ...colourList])
-        setInvalidColourEntered(false)
-        setEnteredColour("")
+
+        if (newColour.colourName) {
+            setHint(false)
+            setColourList([newColour, ...colourList])
+            setInvalidColourEntered(false)
+            setEnteredColour("")
+        }
     }
 
     // Delete item from array in state
@@ -83,7 +89,9 @@ export default function ColourInputer() {
                     aria-errormessage="error-message"
                 />
                 <button type="submit" data-test='add-colour-button'>Add</button>
-                {invalidColourEntered && <p id="error-message">Invalid colour entered</p>}
+                {invalidColourEntered && <p id="error" className="message">Invalid colour entered</p>}
+                {hint && <p id="loading" className="message">Try adding the colour again</p>}
+
             </form>
 
             <RemoveFromListContext.Provider value={removeFromListProvider}>

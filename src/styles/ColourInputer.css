@@ -15,16 +15,23 @@ ul {
     grid-template-rows: repeat(3, auto);
     grid-template-areas: "form-label form-label form-label"
         "form-input form-input submit-button"
-        "error-message error-message error-message";
+        "message message message";
     max-width: 800px;
 }
 
-#error-message {
-    grid-area: error-message;
+.message {
+    grid-area: message;
     margin: 0.5em 0 0 0;
-    color: rgb(255, 0, 0);
     font-size: 0.8rem;
     letter-spacing: unset;
+}
+
+.message#error-message {
+    color: rgb(255, 0, 0);
+}
+
+.message#loading-message {
+    color: rgb(0, 0, 255);
 }
 
 label {
